@@ -405,6 +405,11 @@ $wgConf->settings += [
 		'default' => true,
 	],
 
+	// Bucket
+	'wgBucketDBuser' => [
+		'default' => 'bucketuser2026',
+	],
+
 	// Cache
 	'wgCacheDirectory' => [
 		'default' => '/srv/mediawiki/cache',
@@ -7798,9 +7803,6 @@ if (
 ) {
 	require_once __DIR__ . '/ExtensionMessageFiles-' . $wi->version . '.php';
 }
-
-$wgBucketDBuser = $wgDBuser;
-$wgBucketDBpassword = $wgDBpassword;
 
 // Don't need a global here
 unset( $wi );
