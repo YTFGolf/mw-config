@@ -401,19 +401,6 @@ $wgManageWikiSettings = [
 		'help' => 'Whether or not to enable any disabled-by-default experimental features.',
 		'requires' => [],
 	],
-	'wgDataMapsEnableFandomPortingTools' => [
-		'name' => 'DataMaps: Enable FANDOM porting tools',
-		'from' => 'datamaps',
-		'type' => 'check',
-		'overridedefault' => false,
-		'section' => 'other',
-		'help' => 'Whether or not to enable compatibility with Map pages created with the FANDOM InteractiveMaps extension. Restricted as this is only temporarily enabled for a maintenance script run',
-		'requires' => [
-			'permissions' => [
-				'managewiki-restricted',
-			],
-		],
-	],
 	'wgDisplayFeedsInSidebar' => [
 		'name' => 'Display feeds in sidebar',
 		'from' => 'featuredfeeds',
@@ -603,6 +590,30 @@ $wgManageWikiSettings = [
 		'overridedefault' => false,
 		'section' => 'other',
 		'help' => 'This option sets <code>$wgFeaturedFeedsDefaults["inUserLanguage"]</code>',
+		'requires' => [],
+	],
+	'wgMFRemovableClasses' => [
+		'associativeKey' => 'base',
+		'name' => 'Classes to strip from mobile view',
+		'from' => 'mobilefrontend',
+		'type' => 'list-multi',
+		'overridedefault' => [
+			'beta' => [],
+			'base' => [
+				'.navbox',
+				'.vertical-navbox',
+				'.nomobile',
+			],
+		],
+		'section' => 'other',
+		'options' => [
+			'.navbox' => '.navbox',
+			'.vertical-navbox' => '.vertical-navbox',
+			'.nomobile' => '.nomobile',
+			'.hidden' => '.hidden',
+			'.mobile-hidden' => '.mobile-hidden'
+		],
+		'help' => 'Element with these CSS classes will be removed on mobile view pages. The <code>.hidden</code> and <code>.mobile-hidden</code> classes are used on FANDOM, and may be enabled for compatibility with FANDOM imports.',
 		'requires' => [],
 	],
 
@@ -2005,6 +2016,16 @@ $wgManageWikiSettings = [
 		'help' => 'Load CSS and JavaScript to enhance the details and summary tags, causing them to behave like elements with the mw-collapsible class and be styled like wikitables.',
 		'requires' => [],
 	],
+	'wgParserEnableUserLanguage' => [
+		'name' => 'Enable USERLANGUAGE Magic Word',
+		'from' => 'mediawiki',
+		'type' => 'check',
+		'overridedefault' => false,
+		'global' => true,
+		'help' => 'If enabled, the <nowiki>{{USERLANGUAGE}}</nowiki> magic word will return the actual interface language of the viewer.',
+		'section' => 'parserfunctions',
+		'requires' => [],
+	],
 
 	// Media/File
 	'wgEnableUploads' => [
@@ -2940,6 +2961,15 @@ $wgManageWikiSettings = [
 		'help' => 'Shows comments in the RecentChanges special page.',
 		'requires' => [],
 	],
+	'wgCommentStreamsSuppressLogsFromRCs' => [
+		'name' => 'CommentStreams Suppress Logs From RecentChanges',
+		'from' => 'commentstreams',
+		'type' => 'check',
+		'overridedefault' => true,
+		'section' => 'recentchanges',
+		'help' => 'Suppresses CommentStreams-related logs from being added to Special:RecentChanges',
+		'requires' => [],
+	],
 	'wgWikiForumLogsInRC' => [
 		'name' => 'Display WikiForum logs in RecentChanges',
 		'from' => 'wikiforum',
@@ -3510,29 +3540,6 @@ $wgManageWikiSettings = [
 		'help' => 'Whether to display a Share via WhatsApp button on the sidebar.',
 		'requires' => [],
 	],
-	'wgRandomGameDisplay' => [
-		'name' => 'Random Game Display',
-		'from' => 'randomgameunit',
-		'type' => 'list-multi-bool',
-		'allopts' => [
-			'random_poll',
-			'random_picturegame',
-			'random_quiz',
-		],
-		'options' => [
-			'Poll' => 'random_poll',
-			'PictureGame' => 'random_picturegame',
-			'Quiz' => 'random_quiz',
-		],
-		'overridedefault' => [
-			'random_picturegame' => false,
-			'random_poll' => false,
-			'random_quiz' => false,
-		],
-		'section' => 'socialtools',
-		'help' => 'Controls what games are enabled.',
-		'requires' => [],
-	],
 	'wgUserPageChoice' => [
 		'name' => 'User Page Choice',
 		'from' => 'socialprofile',
@@ -3716,7 +3723,7 @@ $wgManageWikiSettings = [
 			'base',
 		],
 		'options' => [
-			'Beta  feature' => 'beta',
+			'Beta feature' => 'beta',
 			'Default' => 'base',
 		],
 		'overridedefault' => [
@@ -3760,6 +3767,53 @@ $wgManageWikiSettings = [
 				'value' => true,
 			]
 		],
+	],
+	'wgMinervaNightMode' => [
+		'name' => 'Minerva Enable Dark Mode',
+		'from' => 'minervaneue',
+		'type' => 'list-multi-bool',
+		'allopts' => [
+			'amc',
+			'base',
+			'loggedin',
+		],
+		'options' => [
+			'AMC' => 'amc',
+			'Default' => 'base',
+			'Logged in' => 'loggedin',
+		],
+		'overridedefault' => [
+			'amc' => true,
+			'base' => true,
+			'loggedin' => true,
+		],
+		'section' => 'styling',
+		'help' => 'Enable Minerva\'s dark mode for users with these features enabled.',
+		'requires' => [],
+	],
+	'wgVectorNightMode' => [
+		'name' => 'Vector 2022 Enable Dark Mode',
+		'from' => 'vector',
+		'global' => true,
+		'type' => 'list-multi-bool',
+		'allopts' => [
+			'logged_out',
+			'logged_in',
+			'beta',
+		],
+		'options' => [
+			'Logged out' => 'logged_out',
+			'Logged in' => 'logged_in',
+			'Beta feature' => 'beta',
+		],
+		'overridedefault' => [
+			'logged_out' => false,
+			'logged_in' => true,
+			'beta' => false,
+		],
+		'section' => 'styling',
+		'help' => 'Enable Vector 2022\'s dark mode for these users.',
+		'requires' => [],
 	],
 	'wgWordmark' => [
 		'name' => 'Wordmark',

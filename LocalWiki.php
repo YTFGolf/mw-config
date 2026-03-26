@@ -76,22 +76,6 @@ switch ( $wi->dbname ) {
 		};
 
 		break;
-	case 'bluearchivewiki':
-		$wgDplSettings['allowUnlimitedCategories'] = true;
-
-		break;
-	case 'cecuwiki':
-		$wgVectorNightMode['beta'] = true;
-		$wgVectorNightMode['logged_in'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-
-		break;
-	case 'combatinitiationwiki':
-		$wgVectorNightMode['beta'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-		$wgVectorNightMode['logged_in'] = true;
-
-		break;
 	case 'commonswiki':
 		$wgJsonConfigs['Map.JsonConfig']['store'] = true;
 		$wgJsonConfigs['Tabular.JsonConfig']['store'] = true;
@@ -102,20 +86,11 @@ switch ( $wi->dbname ) {
 
 		break;
 	case 'constantnoblewiki':
-		$wgDplSettings['maxResultCount'] = 2500;
-		$wgDplSettings['maxCategoryCount'] = 100;
-
 		// T13620: Show AbuseFilter changes in RecentChanges
 		$wgExtensionFunctions[] = static function () {
 			global $wgLogRestrictions;
 			unset( $wgLogRestrictions['abusefilter'] );
 		};
-
-		break;
-	case 'dappervolkwiki':
-		$wgVectorNightMode['logged_in'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-		$wgDplSettings['maxCategoryCount'] = 15;
 
 		break;
 	case 'dlfmwiki':
@@ -146,11 +121,6 @@ switch ( $wi->dbname ) {
 		];
 
 		break;
-	case 'dungeonrngwiki':
-		$wgVectorNightMode['logged_in'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-
-		break;
 	case 'emiliabearwiki':
 		$wgJsonConfigs['Map.JsonConfig']['isLocal'] = true;
 		$wgJsonConfigs['Tabular.JsonConfig']['isLocal'] = true;
@@ -168,7 +138,6 @@ switch ( $wi->dbname ) {
 
 		break;
 	case 'fischwiki':
-		$wgDplSettings['allowUnlimitedCategories'] = true;
 		$wgLogRestrictions['newusers'] = 'read';
 
 		break;
@@ -193,9 +162,6 @@ switch ( $wi->dbname ) {
 		$wgJsonConfigs['Map.JsonConfig']['remote'] = [
 			'url' => 'https://commons.wikimedia.org/w/api.php'
 		];
-		break;
-	case 'fwtdwiki':
-		$wgMinervaNightMode['base'] = true;
 		break;
 	case 'gpcommonswiki':
 		$wgJsonConfigs['Map.JsonConfig']['isLocal'] = true;
@@ -279,11 +245,6 @@ switch ( $wi->dbname ) {
 		];
 
 		break;
-	case 'gui7814sgtafanonwiki':
-		$wgDplSettings['maxCategoryCount'] = 1000;
-		$wgDplSettings['maxResultCount'] = 1000;
-
-		break;
 	case 'hommwiki':
 		// T12565: This is a workaround for an upstream bug, please remove when the bug fix is merged
 		$wgEnabledAudioTranscodeSet = [];
@@ -301,17 +262,6 @@ switch ( $wi->dbname ) {
 	case 'houkai2ndwiki':
 		$wgSpecialPages['Analytics'] = DisabledSpecialPage::getCallback( 'Analytics', 'MatomoAnalytics-disabled' );
 		$wgPageImagesScores['position'] = [ 100, -100, -100, -100 ];
-
-		break;
-	case 'hullrotwiki':
-		$wgVectorNightMode['logged_in'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-
-		break;
-	case 'kaiserreichwiki':
-		$wgVectorNightMode['beta'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-		$wgVectorNightMode['logged_in'] = true;
 
 		break;
 	case 'kagagawiki':
@@ -652,11 +602,6 @@ switch ( $wi->dbname ) {
 		*/
 
 		break;
-	case 'metzowiki':
-		$wgDplSettings['allowUnlimitedCategories'] = true;
-		$wgDplSettings['allowUnlimitedResults'] = true;
-
-		break;
 	case 'namuwitchwiki':
 		$wgDisableLangConversion = true;
 
@@ -682,20 +627,10 @@ switch ( $wi->dbname ) {
 		];
 
 		break;
-	case 'persistwiki':
-		$wgDplSettings['maxCategoryCount'] = 10;
-
-		break;
 	case 'picrosswiki':
 		$wgLogos = [
 			'svg' => "https://static.wikitide.net/picrosswiki/0/0a/Pikuw.svg",
 		];
-		break;
-	case 'piggywiki':
-		$wgVectorNightMode['beta'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-		$wgVectorNightMode['logged_in'] = true;
-
 		break;
 	case 'paneidoversewiki':
 		$wgHooks['AdminLinks'][] = 'onAdminLinks';
@@ -753,12 +688,6 @@ switch ( $wi->dbname ) {
 		}
 
 		break;
-	case 'roguetown2ewiki':
-		$wgMinervaNightMode['base'] = true;
-		$wgVectorNightMode['logged_in'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-
-		break;
 	case 'sagan4wiki':
 	case 'sagan4betawiki':
 	case 'sagan4alphawiki':
@@ -779,13 +708,6 @@ switch ( $wi->dbname ) {
 		function onBeforePageDisplay( OutputPage $out ) {
 			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
 		}
-
-		break;
-	case 'stopitslenderwiki':
-		$wgMinervaNightMode['base'] = true;
-		$wgVectorNightMode['logged_in'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-		$wgVectorNightMode['beta'] = true;
 
 		break;
 	case 'testwikibeta':
@@ -1163,11 +1085,6 @@ switch ( $wi->dbname ) {
 		}
 
 		break;
-	case 'traceprojectwikiwiki':
-		$wgDplSettings['allowUnlimitedCategories'] = true;
-		$wgDplSettings['allowUnlimitedResults'] = true;
-
-		break;
 	case 'whentheycrywiki':
 		$wgGalleryOptions['imageWidth'] = 200;
 		$wgGalleryOptions['imageHeight'] = 200;
@@ -1206,12 +1123,6 @@ switch ( $wi->dbname ) {
 				}
 			END ) );
 		}
-
-		break;
-	case 'zenithwiki':
-		$wgVectorNightMode['beta'] = true;
-		$wgVectorNightMode['logged_out'] = true;
-		$wgVectorNightMode['logged_in'] = true;
 
 		break;
 	case 'genshinimpactwiki':
