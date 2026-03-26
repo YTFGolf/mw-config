@@ -407,7 +407,7 @@ $wgConf->settings += [
 
 	// Bucket
 	'wgBucketDBuser' => [
-		'default' => 'bucketuser2026',
+		'default' => 'bucketuser',
 	],
 
 	// Cache
