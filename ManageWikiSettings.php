@@ -592,6 +592,30 @@ $wgManageWikiSettings = [
 		'help' => 'This option sets <code>$wgFeaturedFeedsDefaults["inUserLanguage"]</code>',
 		'requires' => [],
 	],
+	'wgMFRemovableClasses' => [
+		'associativeKey' => 'base',
+		'name' => 'Classes to strip from mobile view',
+		'from' => 'mobilefrontend',
+		'type' => 'list-multi',
+		'overridedefault' => [
+			'beta' => [],
+			'base' => [
+				'.navbox',
+				'.vertical-navbox',
+				'.nomobile',
+			],
+		],
+		'section' => 'other',
+		'options' => [
+			'.navbox' => '.navbox',
+			'.vertical-navbox' => '.vertical-navbox',
+			'.nomobile' => '.nomobile',
+			'.hidden' => '.hidden',
+			'.mobile-hidden' => '.mobile-hidden'
+		],
+		'help' => 'Element with these CSS classes will be removed on mobile view pages. The <code>.hidden</code> and <code>.mobile-hidden</code> classes are used on FANDOM, and may be enabled for compatibility with FANDOM imports.',
+		'requires' => [],
+	],
 
 	// Beta Feature related stuff
 	'wgEchoUseCrossWikiBetaFeature' => [
@@ -1990,6 +2014,16 @@ $wgManageWikiSettings = [
 		'overridedefault' => true,
 		'section' => 'parserfunctions',
 		'help' => 'Load CSS and JavaScript to enhance the details and summary tags, causing them to behave like elements with the mw-collapsible class and be styled like wikitables.',
+		'requires' => [],
+	],
+	'wgParserEnableUserLanguage' => [
+		'name' => 'Enable USERLANGUAGE Magic Word',
+		'from' => 'mediawiki',
+		'type' => 'check',
+		'overridedefault' => false,
+		'global' => true,
+		'help' => 'If enabled, the <nowiki>{{USERLANGUAGE}}</nowiki> magic word will return the actual interface language of the viewer.',
+		'section' => 'parserfunctions',
 		'requires' => [],
 	],
 
