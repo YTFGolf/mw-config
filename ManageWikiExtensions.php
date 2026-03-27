@@ -258,6 +258,9 @@ $wgManageWikiExtensions = [
 				'bucket_schemas' => 'extensions/Bucket/sql/tables-generated.sql',
 				'bucket__bucket_issues' => 'extensions/Bucket/sql/issues-table.sql',
 			],
+			'mwscript' => [
+				'Bucket:CreateInitialSchemaForBucketIssues' => [],
+			],
 			'permissions' => [
 				'sysop' => [
 					'permissions' => [
